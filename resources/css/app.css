@@ -1,12 +1,19 @@
-@import 'tailwindcss';
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source "../**/*.blade.php";
-@source "../**/*.js";
-@source "../**/*.vue";
+body {
+    padding-bottom: 60px; /* Agar konten tidak tertutup navbar */
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Pastikan body dan html memenuhi layar */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Wrapper utama untuk konten */
+.main-content {
+    min-height: calc(100vh - 56px); /* Sesuaikan dengan tinggi navbar */
+    padding-bottom: 56px; /* Hindari tab tertutup oleh navbar */
 }
