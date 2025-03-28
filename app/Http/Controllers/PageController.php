@@ -13,6 +13,28 @@ class PageController extends Controller
         return view('pages.home', compact('flights'));
     }
 
+    public function searchFlights(Request $request)
+    {
+        $query = Flight::query();
+
+        if ($request->filled('from')) {
+            $query->where('departure', 'like', '%' . $request->from . '%'); // Ganti 'departure_airport' jadi 'departure'
+        }
+
+        if ($request->filled('to')) {
+            $query->where('destination', 'like', '%' . $request->to . '%'); // Ganti 'arrival_airport' jadi 'destination'
+        }
+
+        if ($request->filled('departure_date')) {
+            $query->whereDate('departure_time', $request->departure_date);
+        }
+
+        $flights = $query->get();
+
+        return view('pages.home', compact('flights'));
+    }
+
+
     public function booking()
     {
         return view('pages.booking-now');

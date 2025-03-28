@@ -1,5 +1,12 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/*
 @import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@import "tailwindcss/utilities"; */
+
+@import "tailwindcss";
+@source "../views";
 
 body {
     padding-bottom: 60px; /* Agar konten tidak tertutup navbar */

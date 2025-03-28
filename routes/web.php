@@ -27,5 +27,6 @@ Route::get('/booking/history', [BookingController::class, 'history'])->name('boo
 Route::get('/booking/{id}', [BookingController::class, 'create'])->name('booking.create');
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
+Route::post('/search-flights', [PageController::class, 'searchFlights'])->name('search.flights');
 
 

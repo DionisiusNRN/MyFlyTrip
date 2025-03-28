@@ -1,4 +1,4 @@
-<div class="flex space-x-4 border-b pb-2 mb-4">
+<div class="flex space-x-4 border-b pb-2 mb-4 my-20">
     <a href="{{ route('booking-now.index') }}"
         class="px-4 py-2 border rounded {{ request()->routeIs('booking-now.index') ? 'bg-blue-500 text-white' : 'bg-gray-200' }}">
         Booking Now
