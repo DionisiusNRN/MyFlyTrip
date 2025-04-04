@@ -12,5 +12,5 @@
         <p><strong>Price:</strong> ${{ number_format($flight->price, 2) }}</p>
     </div>
 </div>
-<div>Davin Elek, Ditya Bau</div>
+<div>Testing 1, 2, dan 3</div>
 @endsection
