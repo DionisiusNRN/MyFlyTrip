@@ -13,5 +13,6 @@
     </div>
 </div>
 <div>Testing 1, 2, dan 3</div>
+<div>halo</div>
 <div>yahya oke</div>
 @endsection
