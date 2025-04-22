@@ -12,21 +12,21 @@
       <!-- Gambar Profil -->
       <div class="flex items-center">
         <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-2xl font-bold text-gray-500">
-          JD
+          NA
         </div>
         <div class="ml-4">
-          <div class="text-lg font-bold text-black">Julian Ditya</div>
+          <div class="text-lg font-bold text-black">Nama Anda</div>
           <div class="text-sm text-black">Masuk dengan Google</div>
         </div>
       </div>
 
-      <!-- Ikon Pensil dengan Hover -->
+      <!-- Ikon Pensil -->
       <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow hover:bg-gray-200 cursor-pointer transition duration-200">
         ✏️
       </div>
     </div>
 
-    <!-- Tombol "Lihat Profil Saya" dengan Hover -->
+    <!-- Tombol "Lihat Profil Saya" -->
     <button class="w-full bg-[#7D0A0A] text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-[#a00d0d] transition duration-200">
       Lihat Profil Saya
     </button>
@@ -113,7 +113,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- jarak ruang menu tambahan dan footer -->
   <div class="h-5"></div>
