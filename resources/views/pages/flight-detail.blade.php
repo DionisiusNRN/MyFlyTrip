@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto mt-27 p-9 bg-white shadow-md rounded-lg">
-    <h2 class="text-lg font-semibold mb-2">Penerbangan Pilihanmu</h2>
+    <h2 class="text-2xl font-semibold mb-2">Penerbangan Pilihanmu</h2>
     <div class="bg-blue-100 p-3 rounded mb-4">
         <p class="text-sm text-gray-700"><strong>{{ $flight->departure }}</strong> → <strong>{{ $flight->destination }}</strong></p>
         <p class="text-sm text-gray-600">1 Dewasa</p>
@@ -51,12 +51,13 @@
     </div>
 </div>
 
+
 {{-- Batas (Fasilitas Penerbangan) --}}
-<div class="pb-12">
+<div class="pb-2">
     <div class="max-w-2xl mx-auto mt-13 p-14 bg-white shadow-md rounded-lg">
         {{-- Konten --}}
         <div>
-            <h1 class="text-2xl font-semibold">Fasilitas Penerbangan</h1>
+            <h2 class="text-2xl font-semibold">Fasilitas Penerbangan</h2>
             <div class="mt-4 flex items-center gap-4">
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Logo_Pelita_Air_Service.png" alt="Lion Air" class="h-6">
               <div>
@@ -69,7 +70,7 @@
           <hr class="my-6">
           
           <div>
-            <h2 class="text-lg font-semibold">Tiket Sudah Termasuk</h2>
+            <h2 class="text-sm font-semibold">Tiket Sudah Termasuk</h2>
             <div class="mt-4 space-y-2">
               <div class="flex items-center gap-3">
                 <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
@@ -95,9 +96,9 @@
           </div>
           
           <div class="mt-6">
-            <h2 class="text-lg font-semibold">Kelas</h2>
+            <h2 class="text-sm font-semibold">Kelas</h2>
             <div class="mt-2 border-t pt-4 flex items-center gap-6">
-              <p class="font-medium">Ekonomi</p>
+              <p class="text-sm font-semibold">Ekonomi</p>
               <div class="flex gap-2">
                 <div class="w-5 h-5 bg-gray-300 rounded-sm border-b-4 border-red-500"></div>
                 <div class="w-5 h-5 bg-gray-300 rounded-sm border-b-4 border-red-500"></div>
@@ -110,63 +111,12 @@
     </div>
 </div>
 
-{{-- Batas (Benefit Gratis Buat Kamu) --}}
-<div class="Benefit pb-12">
-    <div class="max-w-2xl mx-auto mt-1 p-14 bg-white shadow-md rounded-lg">
-        {{-- Konten --}}
-        <div>
-            <h1 class="text-2xl font-semibold">Benefit Gratis buat Kamu</h1>
-          
-            <div class="mt-4 flex items-center gap-3">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Logo_Pelita_Air_Service.png" alt="Lion Air" class="h-5">
-              <p class="text-sm font-medium">SUB &rarr; JOG</p>
-            </div>
-          
-            <p class="text-sm text-gray-500 mt-1">29 Mar 2025, 05:00:11 - 06:00:11 &bull; 1j 5m</p>
-          
-            <hr class="my-6">
-          
-            <!-- Diskon Jemputan -->
-            <div class="flex items-start gap-4 mb-6">
-              <div class="flex-shrink-0">
-                <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
-                     viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M5 13l4 4L19 7"/>
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
-                </svg>
-              </div>
-              <div>
-                <p class="font-semibold text-sm">Diskon Jemputan</p>
-                <p class="text-sm text-gray-600">Dapetin diskon Antar-Jemput Bandara dengan memesan tiket penerbangan ini.</p>
-              </div>
-            </div>
-          
-            <!-- Penerbangan Langsung -->
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0">
-                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                     viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 19l9 2-2-9-7 7zM12 5v6l3 3"/>
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M6.6 4.6L4 12l7.4 2.6"/>
-                </svg>
-              </div>
-              <div>
-                <p class="font-semibold text-sm">Penerbangan Langsung</p>
-                <p class="text-sm text-gray-600">Penerbangan Langsung</p>
-              </div>
-          </div>
-        {{-- Konten --}}
-    </div>
-</div>
 
 {{-- Batas Annauncement --}}
-<div class="Annauncement pb-10 max-w-2xl mx-auto mt-5 px-7 py-7">
+<div class="Annauncement max-w-2xl mx-auto pb-21 mt-2 p-9">
         {{-- Konten --}}
         <div class="bg-white rounded-xl shadow-sm p-6">
-            <h2 class="text-gray-600 font-semibold text-base mb-4">Kebijakan 24 jam</h2>
+            <h2 class="font-semibold text-xl mb-4">Kebijakan 24 jam</h2>
           
             <div class="flex items-start gap-3 bg-blue-50 rounded-lg p-4">
               <img src="https://em-content.zobj.net/source/apple/354/loudspeaker_1f4e2.png" alt="Info Icon" class="w-6 h-6 mt-1">
