@@ -91,7 +91,7 @@
   </div>
 </div>
 
-<!-- jarak menu tambahan dan footer -->
+<!-- jarak menu tambahan & footer -->
 <div class="h-5"></div>
 
 </div>
