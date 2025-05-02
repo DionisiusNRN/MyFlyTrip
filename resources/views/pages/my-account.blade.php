@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+@extends('layouts.main')
+
+@section('content')
 
 <div class="mt-20">
 
@@ -108,5 +111,7 @@
 <div class="h-10"></div>
 
 </div>
+
+@endsection
 
 @endsection
