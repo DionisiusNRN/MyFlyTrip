@@ -21,14 +21,25 @@
     </div>
 
     <form class="space-y-4">
+      <!-- Email (non-editable) -->
       <div class="relative">
-        <input type="email" placeholder="Email" class="w-full border rounded-lg p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <input type="email" placeholder="Email" disabled class="w-full border bg-gray-100 text-gray-500 rounded-lg p-3 pr-10 cursor-not-allowed" />
+        <!-- Ikon centang -->
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 absolute right-3 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg> -->
+      </div>
+
+      <!-- Username (editable) -->
+      <div class="relative">
+        <input type="text" placeholder="Username" class="w-full border rounded-lg p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400" />
         <!-- Ikon centang -->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 absolute right-3 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
       </div>
 
+      <!-- No. Telp (editable) -->
       <div class="relative">
         <input type="text" placeholder="No. Telp" class="w-full border rounded-lg p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400" />
         <!-- Ikon centang -->
@@ -37,10 +48,7 @@
         </svg>
       </div>
 
-      <div>
-        <input type="text" placeholder="Location" class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400" />
-      </div>
-
+      <!-- Tombol Update -->
       <button type="submit" class="w-full bg-[#7D0A0A] text-white py-3 rounded-lg hover:bg-[#5c0707] transition">
         Update
       </button>
