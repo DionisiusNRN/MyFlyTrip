@@ -6,7 +6,7 @@
 
 <div class="bg-[#7D0A0A] rounded-b-2xl pb-3 pt-7 -mt-5">
   <!-- Profil Card -->
-  <div class="bg-[#EEEEEE] mx-4 mt-[-1rem] rounded-xl p-4 shadow-lg">
+  <div class="bg-white mx-4 mt-[-1rem] rounded-xl p-4 shadow-lg">
     <div class="flex items-center justify-between mb-4">
       <!-- Gambar Profil -->
       <div class="flex items-center">
@@ -37,7 +37,7 @@
 <div class="mt-5"></div>
 
 <!-- Menu Tambahan -->
-<div class="bg-[#EEEEEE] rounded-xl p-4 shadow-lg mx-2 mt-4 mb-8 pb-4">
+<div class="bg-white rounded-xl p-4 shadow-lg mx-2 mt-4 mb-8 pb-4">
   <div class="space-y-3">
 
     <!-- MyFlyTrip Info -->

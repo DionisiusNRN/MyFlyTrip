@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout Tiket Pesawat</title>
+  @vite(['resources/css/app.css'])
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen p-4">
+<body class="bg-[#FAF3E0] min-h-screen p-4">
 
   <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-6">
     <!-- Header -->
@@ -70,7 +71,7 @@
     <button class="w-full text-white py-3 rounded-xl font-semibold hover:opacity-90 transition" style="background-color: #7D0A0A;">
       Submit Booking
     </button>
-    
+
   </div>
 
 </body>

@@ -6,7 +6,7 @@
   <title>Edit Profile</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-[#FAF3E0] min-h-screen flex items-center justify-center p-4">
 
   <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-sm relative">
     <!-- Tombol Cancel di kiri atas -->
