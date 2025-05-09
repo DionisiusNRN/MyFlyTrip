@@ -6,8 +6,8 @@
     <title>@yield('title')</title>
     {{-- @vite('resources/css/app.css') --}}
     @vite(['resources/css/app.css'])
-    <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('all.min.css') }}">
+
 </head>
 <body class="bg-[#FAF3E0] text-gray-900 flex flex-col min-h-screen">
 
