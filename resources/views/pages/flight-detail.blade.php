@@ -107,6 +107,13 @@
               </div>
             </div>
           </div>
+           <!-- Tombol Pilih -->
+          <div class="mt-6 flex justify-end">
+            <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
+              Select
+            </button>
+          </div>
+        </div>
         {{-- Konten --}}
     </div>
 </div>
