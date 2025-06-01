@@ -13,4 +13,10 @@ class Flight extends Model
         'airline', 'departure', 'destination',
         'departure_time', 'arrival_time', 'price'
     ];
+
+    protected $casts = [
+    'departure_time' => 'datetime',
+    'arrival_time' => 'datetime',
+];
+
 }

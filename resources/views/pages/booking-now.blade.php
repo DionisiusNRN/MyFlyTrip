@@ -11,7 +11,7 @@
             <div class="p-4 bg-white shadow-md rounded-lg mb-3">
                 @if ($booking->flight)
                     <p class="font-semibold">{{ $booking->flight->airline }} - {{ $booking->flight->destination }}</p>
-                    <p class="text-sm text-gray-500">Tanggal: {{ $booking->flight->departure_time }}</p>
+                    <p class="text-sm text-gray-500">Tanggal: {{ \Carbon\Carbon::parse($booking->flight->departure_time)->format('d M Y H:i') }}</p>
                 @else
                     <p class="text-red-500">Flight data not available</p>
                 @endif
