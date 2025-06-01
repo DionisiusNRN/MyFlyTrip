@@ -34,13 +34,11 @@
                     <p>Departure: {{ $flight->departure_time }}</p>
                     <p>Price: ${{ number_format($flight->price, 2) }}</p>
 
-                    <a href="{{ route('flight.show', $flight->id) }}" class="text-[#7D0A0A] underline hover:text-gray-500">
-                        View Details
-                    </a>
-
-                    <button class="bg-[#EAD196] text-[#7D0A0A] hover:bg-[#7D0A0A] hover:text-white px-4 py-2 mx-5 rounded ">
-                        Select
-                    </button>
+                    <div class="m-3">
+                        <a href="{{ route('flight.show', $flight->id) }}" class="text-[#7D0A0A] underline hover:text-gray-500">
+                            View Details
+                        </a>
+                    </div>
                 </div>
             @endforeach
         @endif

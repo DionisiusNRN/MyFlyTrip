@@ -11,6 +11,7 @@ class Booking extends Model
 
     protected $fillable = [
         'user_name',
+        'flight_id',
         'flight_number',
         'departure_date',
         'status', // Misal: 'now' atau 'history'

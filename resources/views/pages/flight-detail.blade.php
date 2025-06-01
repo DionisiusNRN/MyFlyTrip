@@ -66,9 +66,9 @@
               </div>
             </div>
           </div>
-          
+
           <hr class="my-6">
-          
+
           <div>
             <h2 class="text-sm font-semibold">Tiket Sudah Termasuk</h2>
             <div class="mt-4 space-y-2">
@@ -83,7 +83,7 @@
               <p class="text-sm text-gray-500 ml-8">Pembelian bagasi tambahan tersedia di halaman pemesanan.<br>
                 *Ketersediaan tergantung pihak maskapai.</p>
             </div>
-          
+
             <div class="mt-4 flex items-center gap-3">
               <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
                    viewBox="0 0 24 24">
@@ -94,7 +94,7 @@
             </div>
             <p class="text-sm text-gray-500 ml-8">Pembelian makanan tambahan tidak tersedia di halaman pemesanan.</p>
           </div>
-          
+
           <div class="mt-6">
             <h2 class="text-sm font-semibold">Kelas</h2>
             <div class="mt-2 border-t pt-4 flex items-center gap-6">
@@ -109,9 +109,11 @@
           </div>
            <!-- Tombol Pilih -->
           <div class="mt-6 flex justify-end">
-            <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
-              Select
-            </button>
+            <a href="{{ route('booking.select', ['flight_id' => $flight->id]) }}">
+                <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
+                    Select
+                </button>
+            </a>
           </div>
         </div>
         {{-- Konten --}}
@@ -124,7 +126,7 @@
         {{-- Konten --}}
         <div class="bg-white rounded-xl shadow-sm p-6">
             <h2 class="font-semibold text-xl mb-4">Kebijakan 24 jam</h2>
-          
+
             <div class="flex items-start gap-3 bg-blue-50 rounded-lg p-4">
               <img src="https://em-content.zobj.net/source/apple/354/loudspeaker_1f4e2.png" alt="Info Icon" class="w-6 h-6 mt-1">
               <p class="text-sm text-gray-700">

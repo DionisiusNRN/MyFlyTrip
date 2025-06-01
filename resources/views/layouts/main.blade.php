@@ -7,6 +7,9 @@
     {{-- @vite('resources/css/app.css') --}}
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('all.min.css') }}">
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
 
 </head>
 <body class="bg-[#FAF3E0] text-gray-900 flex flex-col min-h-screen">
