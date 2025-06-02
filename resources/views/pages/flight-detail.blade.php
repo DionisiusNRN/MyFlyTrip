@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto mt-27 p-9 bg-white shadow-md rounded-lg">
-    <h2 class="text-2xl font-semibold mb-2">Penerbangan Pilihanmu</h2>
+    <div class="flex items-center justify-between mb-2">
+        <h2 class="text-2xl font-semibold">Penerbangan Pilihanmu</h2>
+        <button id="save-button" class="text-2xl text-gray-600 hover:text-red-600 transition">
+            <i id="save-icon" class="fa-regular fa-bookmark"></i>
+        </button>
+    </div>
+
     <div class="bg-blue-100 p-3 rounded mb-4">
         <p class="text-sm text-gray-700"><strong>{{ $flight->departure }}</strong> → <strong>{{ $flight->destination }}</strong></p>
         <p class="text-sm text-gray-600">1 Dewasa</p>
@@ -137,4 +143,48 @@
         {{-- Konten --}}
     </div>
 </div>
+
+<script>
+    document.getElementById('save-button').addEventListener('click', function () {
+        const icon = document.getElementById('save-icon');
+
+        fetch("{{ route('flight.toggleSave', ['id' => $flight->id]) }}", {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Toggle icon berdasarkan respon
+            if (data.status === 'saved') {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+            } else {
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+            }
+        })
+        .catch(error => {
+            console.error("Failed to save flight:", error);
+        });
+    });
+</script>
+
+
+{{-- <script>
+    document.getElementById('save-button').addEventListener('click', function () {
+        const icon = document.getElementById('save-icon');
+
+        if (icon.classList.contains('fa-regular')) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+        } else {
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+        }
+    });
+</script> --}}
+
 @endsection

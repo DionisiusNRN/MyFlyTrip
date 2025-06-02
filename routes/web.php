@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/saved', [PageController::class, 'saved'])->name('saved.index');
+Route::post('/flights/{id}/unsave', [FlightController::class, 'unsave'])->name('flights.unsave');
 Route::get('/account', [PageController::class, 'account'])->name('my-account.index');
 
 Route::view('/login', 'login');
@@ -16,6 +17,8 @@ Route::view('/register', 'register');
 Route::view('/edit-profile', 'edit-profile');
 
 Route::get('/flight/{id}', [FlightController::class, 'show'])->name('flight.show');
+Route::post('/flight/save/{id}', [FlightController::class, 'toggleSave'])->name('flight.toggleSave');
+
 
 Route::match(['GET', 'POST'], '/midtrans/callback', [PaymentController::class, 'callback'])->name('midtrans.callback');
 

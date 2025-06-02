@@ -42,7 +42,10 @@ class PageController extends Controller
 
     public function saved()
     {
-        return view('pages.saved');
+        // return view('pages.saved');
+        $savedFlights = Flight::where('save', 'saved')->get();
+
+        return view('pages.saved', compact('savedFlights'));
     }
 
     public function account()
