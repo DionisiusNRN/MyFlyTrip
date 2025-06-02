@@ -12,10 +12,7 @@
 <body class="bg-[#FAF3E0] min-h-screen p-4">
   <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-6">
     <!-- Header -->
-    <div class="flex items-center justify-between">
-        <a href="{{ route('flight.show', $flight->id) }}">
-            <button class="text-sm text-gray-500">Back</button>
-        </a>
+    <div class="flex items-center justify-center">
       <h1 class="text-lg font-semibold">Checkout</h1>
       <div></div> <!-- Biar header tetap center -->
     </div>
@@ -59,11 +56,24 @@
       </div>
     </div>
 
-    <button id="pay-button"
-        class="w-full text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
-        style="background-color: #7D0A0A;">
-        Bayar Sekarang
-    </button>
+    <div class="flex gap-4">
+        <form action="{{ route('payment.cancel', $booking->id) }}" method="POST" class="flex-1">
+            @csrf
+            <button type="submit"
+                onclick="return confirm('Apakah kamu yakin ingin membatalkan transaksi ini?')"
+                class="w-full bg-gray-400 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition">
+                Batal
+            </button>
+        </form>
+
+        <div class="flex-1">
+            <button id="pay-button"
+                class="w-full text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
+                style="background-color: #7D0A0A;">
+                Bayar Sekarang
+            </button>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}"></script>
 

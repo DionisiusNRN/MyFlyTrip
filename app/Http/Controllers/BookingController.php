@@ -79,15 +79,6 @@ class BookingController extends Controller
     // }
 
 
-    public function cancel($booking_id)
-    {
-        $booking = Booking::findOrFail($booking_id);
-        $booking->delete();
-        return redirect()->route('flight.index'); // atau halaman lain sesuai flow
-    }
-
-
-
 
 
     public function create($id)

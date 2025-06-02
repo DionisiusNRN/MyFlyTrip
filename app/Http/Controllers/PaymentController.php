@@ -119,4 +119,15 @@ class PaymentController extends Controller
         return view('payment-success');
     }
 
+    public function cancel($booking_id)
+    {
+        // Hapus payment terlebih dahulu agar foreign key tidak bermasalah
+        Payment::where('booking_id', $booking_id)->delete();
+
+        // Lalu hapus booking-nya
+        Booking::where('id', $booking_id)->delete();
+
+        return redirect()->route('home')->with('success', 'Transaksi berhasil dibatalkan.');
+    }
+
 }
