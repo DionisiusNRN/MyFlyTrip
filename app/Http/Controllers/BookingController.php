@@ -5,29 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Flight;
-
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
     public function now()
     {
-        $bookings = Booking::with('flight')->where('status', 'ongoing')->get();
+        $bookings = Booking::with('flight')
+            ->where('user_id', Auth::guard('user_customer')->id())
+            ->where('status', 'ongoing')->get();
         return view('pages.booking-now', compact('bookings'));
     }
 
     public function history()
     {
-        $bookings = Booking::with('flight')->where('status', 'completed')->get();
+        $bookings = Booking::with('flight')
+            ->where('user_id', Auth::guard('user_customer')->id())
+            ->where('status', 'completed')->get();
         return view('pages.booking-history', compact('bookings'));
     }
 
     public function selectFlight($flight_id)
     {
-        // Dummy user_name (karena gak ada auth user_id)
-        $userName = 'dummyuser';
+        $user = Auth::guard('user_customer')->user();
+        if (!$user) {
+            return redirect()->route('login.form')->with('error', 'Silakan login terlebih dahulu untuk memilih flight.');
+        }
 
-        // Cek booking pending untuk user_name ini dan flight_id
-        $existingBooking = Booking::where('user_name', $userName)
+        // Cek booking pending untuk username ini dan flight_id
+        $existingBooking = Booking::where('user_id', $user->id)
             ->where('flight_id', $flight_id)
             ->where('status', 'pending')
             ->first();
@@ -36,11 +42,11 @@ class BookingController extends Controller
             $booking = $existingBooking;
         } else {
             $flight = Flight::findOrFail($flight_id);
-            // dd($flight);
 
-            // Buat booking baru
+
             $booking = Booking::create([
-                'user_name' => $userName,
+                'user_id' => $user->id,
+                'username' => $user->username,
                 'flight_id' => $flight->id,
                 'flight_number' => $flight->flight_number,
                 'departure_date' => Flight::find($flight_id)->departure_time->format('Y-m-d'), // sesuaikan tipe data
@@ -50,37 +56,6 @@ class BookingController extends Controller
 
         return redirect()->route('payment.pay', ['id' => $booking->id]);
     }
-
-
-    // public function selectFlight($flight_id)
-    // {
-    //     $userId = auth()->id(); // sesuaikan kalau pake auth, kalau belum bisa di-set null atau dummy
-
-    //     // Cek dulu apakah sudah ada booking ongoing untuk flight ini dan user ini (optional, biar gak duplikat)
-    //     $existingBooking = Booking::where('user_id', $userId)
-    //         ->where('flight_id', $flight_id)
-    //         ->where('status', 'pending')
-    //         ->first();
-
-    //     if ($existingBooking) {
-    //         // Kalau sudah ada, pakai booking itu
-    //         $booking = $existingBooking;
-    //     } else {
-    //         // Kalau belum ada, buat booking baru
-    //         $booking = Booking::create([
-    //             'user_id' => '1',
-    //             'flight_id' => $flight_id,
-    //             'status' => 'pending', // status awal sebelum bayar
-    //         ]);
-    //     }
-
-    //     // Redirect ke payment dengan booking_id
-    //     return redirect()->route('payment.pay', ['booking_id' => $booking->id]);
-    // }
-
-
-
-
     public function create($id)
     {
         return view('pages.booking-create', compact('id'));

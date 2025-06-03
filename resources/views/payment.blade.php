@@ -62,7 +62,7 @@
             <button type="submit"
                 onclick="return confirm('Apakah kamu yakin ingin membatalkan transaksi ini?')"
                 class="w-full bg-gray-400 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition">
-                Batal
+                Cancel
             </button>
         </form>
 
@@ -70,7 +70,7 @@
             <button id="pay-button"
                 class="w-full text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
                 style="background-color: #7D0A0A;">
-                Bayar Sekarang
+                Pay
             </button>
         </div>
     </div>
@@ -147,7 +147,6 @@
             @endif
         });
     </script>
-
   </div>
 </body>
 

@@ -8,6 +8,7 @@ use Midtrans\Snap;
 use App\Models\Booking;
 use App\Models\Payment;
 use Midtrans\Config;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -31,12 +32,15 @@ class PaymentController extends Controller
         // Simpan order_id ke bookings
         $booking->update([
             'order_id' => $orderId,
-            'status' => 'pending', // sebetulnya udah pending, tapi biar aman
+            'status' => 'pending',
         ]);
+
+        $user = Auth::guard('user_customer')->user();
 
         // Simpan ke payments
         Payment::create([
             'booking_id'  => $booking->id,
+            'user_id'        => $user->id,
             'order_id'    => $orderId,
             'transaction_id' => $transactionId,
             'payment_type'   => 'onprogress',
@@ -71,15 +75,14 @@ class PaymentController extends Controller
                 ],
             ],
             'customer_details' => [
-                'first_name' => 'John',
-                'email' => 'john@example.com',
-                'phone' => '08123456789',
+                'first_name' => $user->username,
+                'email' => $user->email,
+                'phone' => $user->phone,
             ],
         ]);
 
         return view('payment', compact('booking', 'flight', 'adminFee', 'totalPrice', 'snapToken'));
     }
-
 
     public function callback(Request $request)
     {
@@ -113,9 +116,12 @@ class PaymentController extends Controller
         return response()->json(['message' => 'Callback processed successfully']);
     }
 
-
     public function paymentSuccess()
     {
+        if (!Auth::guard('user_customer')->check()) {
+            return redirect()->route('login.form');
+        }
+
         return view('payment-success');
     }
 
@@ -129,5 +135,4 @@ class PaymentController extends Controller
 
         return redirect()->route('home')->with('success', 'Transaksi berhasil dibatalkan.');
     }
-
 }
