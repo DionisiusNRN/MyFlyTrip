@@ -6,6 +6,7 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\UserCustomerAuthController;
+use App\Http\Controllers\ProfileController;
 
 // Boleh diakses publik
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -29,7 +30,8 @@ Route::middleware(['auth:user_customer'])->group(function () {
     Route::post('/flights/{id}/unsave', [FlightController::class, 'unsave'])->name('flights.unsave');
     Route::post('/flight/save/{id}', [FlightController::class, 'toggleSave'])->name('flight.toggleSave');
 
-    Route::view('/edit-profile', 'edit-profile');
+    Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/edit-profile', [ProfileController::class, 'update'])->name('profile.update');
 
     // Booking
     Route::get('/booking/select/{flight_id}', [BookingController::class, 'selectFlight'])->name('booking.select');

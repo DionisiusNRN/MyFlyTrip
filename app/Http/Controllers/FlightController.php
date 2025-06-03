@@ -21,9 +21,6 @@ class FlightController extends Controller
 
         return view('pages.saved', compact('savedFlights'));
     }
-
-
-    // public function toggleSave($id)
     // {
     //     $user = Auth::guard('user_customer')->user();
     //     // dd(get_class($user));
