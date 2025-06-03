@@ -10,8 +10,9 @@
     <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
 
-        <form action="#" method="POST">
+        <form action="{{ route('register.submit') }}" method="POST">
             @csrf
+
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
                 <input type="text" id="username" name="username" required
@@ -21,6 +22,12 @@
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                 <input type="email" id="email" name="email" required
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+                <input type="text" id="phone" name="phone" required
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
 
@@ -43,8 +50,10 @@
         </form>
 
         <p class="mt-4 text-center text-sm text-gray-600">
-            Already have an account? <a href="{{ url('/login') }}" class="text-blue-500 hover:underline">Login</a>
+            Already have an account?
+            <a href="{{ route('login.form') }}" class="text-blue-500 hover:underline">Login</a>
         </p>
     </div>
 </body>
+
 </html>

@@ -4,9 +4,17 @@
 <div class="max-w-2xl mx-auto mt-27 p-9 bg-white shadow-md rounded-lg">
     <div class="flex items-center justify-between mb-2">
         <h2 class="text-2xl font-semibold">Penerbangan Pilihanmu</h2>
-        <button id="save-button" class="text-2xl text-gray-600 hover:text-red-600 transition">
-            <i id="save-icon" class="fa-regular fa-bookmark"></i>
-        </button>
+        @if(Auth::guard('user_customer')->check())
+            <button id="save-button" class="text-2xl text-gray-600 hover:text-red-600 transition">
+                {{-- <i id="save-icon" class="fa-regular fa-bookmark"></i> --}}
+                <i id="save-icon" class="{{ Auth::guard('user_customer')->user()->savedFlights->contains($flight->id) ? 'fa-solid' : 'fa-regular' }} fa-bookmark"></i>
+
+            </button>
+        @else
+            <button onclick="askToLogin()" class="text-2xl text-gray-600 hover:text-red-600 transition">
+                <i class="fa-regular fa-bookmark"></i>
+            </button>
+        @endif
     </div>
 
     <div class="bg-blue-100 p-3 rounded mb-4">
@@ -115,11 +123,20 @@
           </div>
            <!-- Tombol Pilih -->
           <div class="mt-6 flex justify-end">
-            <a href="{{ route('booking.select', ['flight_id' => $flight->id]) }}">
-                <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
-                    Select
-                </button>
-            </a>
+
+            @if(Auth::guard('user_customer')->check())
+                <a href="{{ route('booking.select', ['flight_id' => $flight->id]) }}">
+                    <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
+                        Select
+                    </button>
+                </a>
+            @else
+                <a href="javascript:void(0)" onclick="askToLogin()">
+                    <button class="bg-[#7D0A0A] text-white hover:bg-[#EAD196] hover:text-white px-4 py-2 mx-5 rounded ">
+                        Select
+                    </button>
+                </a>
+            @endif
           </div>
         </div>
         {{-- Konten --}}
@@ -144,8 +161,10 @@
     </div>
 </div>
 
+{{-- save function --}}
+@auth('user_customer')
 <script>
-    document.getElementById('save-button').addEventListener('click', function () {
+    document.getElementById('save-button')?.addEventListener('click', function () {
         const icon = document.getElementById('save-icon');
 
         fetch("{{ route('flight.toggleSave', ['id' => $flight->id]) }}", {
@@ -157,7 +176,6 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Toggle icon berdasarkan respon
             if (data.status === 'saved') {
                 icon.classList.remove('fa-regular');
                 icon.classList.add('fa-solid');
@@ -171,20 +189,7 @@
         });
     });
 </script>
+@endauth
 
-
-{{-- <script>
-    document.getElementById('save-button').addEventListener('click', function () {
-        const icon = document.getElementById('save-icon');
-
-        if (icon.classList.contains('fa-regular')) {
-            icon.classList.remove('fa-regular');
-            icon.classList.add('fa-solid');
-        } else {
-            icon.classList.remove('fa-solid');
-            icon.classList.add('fa-regular');
-        }
-    });
-</script> --}}
 
 @endsection
