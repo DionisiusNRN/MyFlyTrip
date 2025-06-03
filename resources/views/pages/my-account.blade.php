@@ -6,27 +6,25 @@
         <div class="bg-[#7D0A0A] rounded-b-2xl pb-3 pt-7 -mt-5">
             <!-- Profil Card -->
             <div class="bg-white mx-4 mt-[-1rem] rounded-xl p-4 shadow-lg">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex flex-col items-start space-y-2">
 
-                <div>
-                    <div class="text-lg font-bold text-black">{{ Auth::guard('user_customer')->user()->username }}</div>
-                    <div class="text-sm text-black">Selamat datang kembali!</div>
-                </div>
+                    <div class="text-lg font-bold text-black">
+                        {{ Auth::guard('user_customer')->user()->username }}
+                    </div>
 
+                    <div class="text-sm text-black">
+                        {{ Auth::guard('user_customer')->user()->email }}
+                    </div>
 
-                <!-- Ikon Pensil sebagai <a> -->
-                <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow hover:bg-gray-200 cursor-pointer transition duration-200">
-                    ✏️
-                </a>
-
-                </div>
-                    <!-- Tombol "Lihat Profil Saya" jadi <a> -->
-                    <a href="#" class="w-full block text-center bg-[#7D0A0A] text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-[#a00d0d] transition duration-200">
-                    Lihat Profil Saya
+                    {{-- Update Profile --}}
+                    <a href="{{ route('profile.edit') }}" class="w-full text-center bg-[#7D0A0A] text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-[#a00d0d] transition duration-200">
+                        Update Profile
                     </a>
+
                 </div>
             </div>
         </div>
+
 
         <!-- jarak profil dan menu tambahan -->
         <div class="mt-5"></div>
