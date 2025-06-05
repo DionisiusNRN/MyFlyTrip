@@ -9,11 +9,39 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
+    // public function now()
+    // {
+    //     $bookings = Booking::with('flight')
+    //         ->where('user_id', Auth::guard('user_customer')->id())
+    //         ->where('status', 'ongoing')->get();
+    //     return view('pages.booking-now', compact('bookings'));
+    // }
+
+
     public function now()
     {
+        $userId = Auth::guard('user_customer')->id();
+
+        // Ambil semua booking ongoing milik user
         $bookings = Booking::with('flight')
-            ->where('user_id', Auth::guard('user_customer')->id())
-            ->where('status', 'ongoing')->get();
+            ->where('user_id', $userId)
+            ->where('status', 'ongoing')
+            ->get();
+
+        // Cek dan update status jika sudah lewat dari waktu keberangkatan
+        foreach ($bookings as $booking) {
+            if (now()->greaterThanOrEqualTo($booking->flight->departure_time)) {
+                $booking->status = 'completed';
+                $booking->save();
+            }
+        }
+
+        // Ambil ulang booking ongoing yang masih valid
+        $bookings = Booking::with('flight')
+            ->where('user_id', $userId)
+            ->where('status', 'ongoing')
+            ->get();
+
         return view('pages.booking-now', compact('bookings'));
     }
 
