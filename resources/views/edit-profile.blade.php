@@ -8,11 +8,6 @@
 </head>
 <body class="bg-[#FAF3E0] min-h-screen flex items-center justify-center p-4">
   <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-sm relative">
-    <!-- Tombol Cancel di kiri atas -->
-    <a href="#" class="absolute top-4 left-4  text-gray-500 font-semibold hover:underline">
-      Cancel
-    </a>
-
     <h2 class="text-2xl font-semibold text-center mb-6">Edit Profile</h2>
 
     <form class="space-y-4" action="{{ route('profile.update') }}" method="POST">
