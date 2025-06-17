@@ -15,7 +15,7 @@ class Booking extends Model
         'flight_id',
         'flight_number',
         'departure_date',
-        'status', // Misal: 'now' atau 'history'
+        'status',
     ];
 
     public function flight()

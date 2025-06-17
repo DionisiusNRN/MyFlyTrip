@@ -9,8 +9,9 @@ class PageController extends Controller
 {
     public function home()
     {
-        // $flights = Flight::all(); // Ambil semua data penerbangan
-        $flights = Flight::where('departure_time', '>', now()->addHours(6))->get();
+        $flights = Flight::where('departure_time', '>', now()->addHours(6))
+                        ->orderBy('departure_time', 'asc')
+                        ->paginate(10);
         return view('pages.home', compact('flights'));
     }
 
@@ -32,7 +33,8 @@ class PageController extends Controller
 
         $query->where('departure_time', '>', now()->addHours(6));
 
-        $flights = $query->get();
+        // $flights = $query->get();
+        $flights = $query->orderBy('departure_time', 'asc')->paginate(10);
 
         return view('pages.home', compact('flights'));
     }

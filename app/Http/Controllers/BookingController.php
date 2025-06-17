@@ -9,14 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    // public function now()
-    // {
-    //     $bookings = Booking::with('flight')
-    //         ->where('user_id', Auth::guard('user_customer')->id())
-    //         ->where('status', 'ongoing')->get();
-    //     return view('pages.booking-now', compact('bookings'));
-    // }
-
 
     public function now()
     {

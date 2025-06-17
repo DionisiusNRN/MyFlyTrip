@@ -21,28 +21,6 @@ class FlightController extends Controller
 
         return view('pages.saved', compact('savedFlights'));
     }
-    // {
-    //     $user = Auth::guard('user_customer')->user();
-    //     // dd(get_class($user));
-    //     $flight = Flight::findOrFail($id);
-
-    //     // // Toggle status save
-    //     // $flight->save = ($flight->save === 'saved') ? 'unsaved' : 'saved';
-    //     // $flight->save();
-
-    //     if ($user->savedFlights()->where('flight_id', $id)->exists()) {
-    //         // Kalau sudah disimpan, hapus dari pivot
-    //         $user->savedFlights()->detach($id);
-    //         $status = 'unsaved';
-    //     } else {
-    //         // Kalau belum disimpan, tambahkan ke pivot
-    //         $user->savedFlights()->attach($id);
-    //         $status = 'saved';
-    //     }
-
-    //     return response()->json(['status' => $flight->save]);
-    // }
-
 
     public function toggleSave($id)
     {

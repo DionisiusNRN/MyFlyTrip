@@ -82,8 +82,10 @@
                     </div>
                 @endforeach
             </div>
+            <div class="mt-6">
+                {{ $flights->links() }}
+            </div>
         @endif
-
     </div>
 @endsection
 
