@@ -27,7 +27,7 @@ Route::middleware(['auth:user_customer'])->group(function () {
     Route::post('/logout', [UserCustomerAuthController::class, 'logout'])->name('logout');
 
     Route::get('/saved', [FlightController::class, 'saved'])->name('saved.index');
-    Route::post('/flights/{id}/unsave', [FlightController::class, 'unsave'])->name('flights.unsave');
+    Route::post('/flights/{id}/unsave', [FlightController::class, 'unsave'])->name(name: 'flights.unsave');
     Route::post('/flight/save/{id}', [FlightController::class, 'toggleSave'])->name('flight.toggleSave');
 
     Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');

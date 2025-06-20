@@ -76,14 +76,13 @@ class BookingController extends Controller
 
         return redirect()->route('payment.pay', ['id' => $booking->id]);
     }
-    public function create($id)
-    {
-        return view('pages.booking-create', compact('id'));
-    }
 
     public function store(Request $request)
     {
+
         Booking::create($request->all());
         return redirect()->route('booking-now.index')->with('success', 'Booking berhasil!');
+
     }
+
 }

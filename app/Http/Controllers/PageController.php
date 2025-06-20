@@ -39,11 +39,6 @@ class PageController extends Controller
         return view('pages.home', compact('flights'));
     }
 
-    public function booking()
-    {
-        return view('pages.booking-now');
-    }
-
     public function account()
     {
         return view('pages.my-account');

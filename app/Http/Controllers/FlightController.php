@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 // savedFlights() error nggak jelas
 class FlightController extends Controller
 {
+
     public function show($id)
     {
         $flight = Flight::findOrFail($id);
@@ -45,4 +46,5 @@ class FlightController extends Controller
 
         return response()->json(['message' => 'Flight unsaved successfully']);
     }
+
 }
