@@ -4,48 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout Tiket Pesawat</title>
-  @vite(['resources/css/app.css'])
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
 
+  {{-- Import styling dari Laravel Vite build --}}
+  @vite(['resources/css/app.css'])
+
+  {{-- CDN Tailwind untuk fallback styling --}}
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  {{-- Script Snap.js dari Midtrans sandbox dengan client key --}}
+  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
+
 <body class="bg-[#FAF3E0] min-h-screen p-4">
   <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-6">
+
     <!-- Header -->
     <div class="flex items-center justify-center">
       <h1 class="text-lg font-semibold">Checkout</h1>
-      <div></div> <!-- Biar header tetap center -->
+      <div></div> {{-- Elemen dummy agar heading tetap center --}}
     </div>
 
-    <!-- Order Summary -->
+    <!-- Ringkasan Harga -->
     @php
-    $adminFee = $flight->price * 0.02;
-    $totalPrice = $flight->price + $adminFee;
+    $adminFee = $flight->price * 0.02; // Biaya admin 2% dari harga tiket
+    $totalPrice = $flight->price + $adminFee; // Total harga akhir
     @endphp
 
     <div class="bg-gray-50 p-4 rounded-lg space-y-2">
-    <div class="flex justify-between text-sm">
-        <span>Ticket Price</span>
-        <span>Rp{{ number_format($flight->price, 0, ',', '.') }}</span>
-    </div>
-    <div class="flex justify-between text-sm">
-        <span>Admin Fee 2%</span>
-        <span>Rp{{ number_format($adminFee, 0, ',', '.') }}</span>
-    </div>
-    <div class="border-t my-2"></div>
-    <div class="flex justify-between font-semibold">
-        <span>Total</span>
-        <span>Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
-    </div>
+      <div class="flex justify-between text-sm">
+          <span>Ticket Price</span>
+          <span>Rp{{ number_format($flight->price, 0, ',', '.') }}</span>
+      </div>
+      <div class="flex justify-between text-sm">
+          <span>Admin Fee 2%</span>
+          <span>Rp{{ number_format($adminFee, 0, ',', '.') }}</span>
+      </div>
+      <div class="border-t my-2"></div>
+      <div class="flex justify-between font-semibold">
+          <span>Total</span>
+          <span>Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
+      </div>
     </div>
 
-    <!-- Confirm Message -->
+    <!-- Pesan Konfirmasi -->
     <div class="text-xs text-gray-500">
       Please confirm and submit your booking<br>
       <span class="text-[10px]">By clicking submit, you agree to Terms and Conditions</span>
     </div>
 
-    <!-- Passenger Info -->
+    <!-- Informasi Penumpang -->
     <div class="bg-gray-50 p-4 rounded-lg">
       <div class="flex justify-between items-center mb-2">
         <span class="font-semibold text-sm">Passenger Details</span>
@@ -56,7 +63,9 @@
       </div>
     </div>
 
+    <!-- Tombol Aksi: Cancel & Pay -->
     <div class="flex gap-4">
+        {{-- Tombol untuk membatalkan pemesanan --}}
         <form action="{{ route('payment.cancel', $booking->id) }}" method="POST" class="flex-1">
             @csrf
             <button type="submit"
@@ -66,6 +75,7 @@
             </button>
         </form>
 
+        {{-- Tombol untuk memulai pembayaran --}}
         <div class="flex-1">
             <button id="pay-button"
                 class="w-full text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
@@ -75,9 +85,11 @@
         </div>
     </div>
 
+    <!-- Konfigurasi Snap -->
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}"></script>
 
     <script>
+        // Data pembayaran yang akan dikirim manual ke server setelah transaksi sukses
         const grossAmount = {{ (int) $totalPrice }};
         const itemDetails = {!! json_encode([
             [
@@ -97,6 +109,7 @@
         const bookingId = {{ $booking->id }};
     </script>
 
+    <!-- Script Snap Midtrans -->
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             const payButton = document.getElementById('pay-button');
@@ -105,7 +118,7 @@
             payButton.addEventListener('click', function () {
                 window.snap.pay('{{ $snapToken }}', {
                     onSuccess: function(result) {
-                        // Kirim tambahan data gross_amount dan item_details secara manual
+                        // Setelah sukses bayar, kirim data tambahan ke route callback Midtrans
                         const additionalData = {
                             gross_amount: grossAmount,
                             item_details: itemDetails
@@ -149,5 +162,4 @@
     </script>
   </div>
 </body>
-
 </html>

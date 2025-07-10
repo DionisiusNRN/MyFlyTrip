@@ -1,4 +1,5 @@
 <div class="flex space-x-6 pb-3 mt-20 max-w-md mx-auto">
+    {{-- Tombol Tab: Booking Now --}}
     <a href="{{ route('booking-now.index') }}"
        class="px-6 py-2 rounded-t-lg font-semibold transition-colors duration-300
               {{ request()->routeIs('booking-now.index')
@@ -6,6 +7,8 @@
                   : 'bg-white text-gray-700 hover:text-[#7D0A0A] hover:border-b-4 hover:border-[#EAD196]' }}">
         Booking Now
     </a>
+
+    {{-- Tombol Tab: Booking History --}}
     <a href="{{ route('booking-history.index') }}"
        class="px-6 py-2 rounded-t-lg font-semibold transition-colors duration-300
               {{ request()->routeIs('booking-history.index')
